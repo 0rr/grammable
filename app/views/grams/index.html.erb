@@ -1,3 +1,13 @@
 
+<h1>Gram Index</h1>
+<h3>grams#index</h3>
+<br />
 
-<h1>grams#index</h1>
+<%= link_to('Add a Gram', new_gram_path, {class: 'btn btn-primary'}) %>
+<br />
+
+<%= @grams.each do |gram| %>
+  <%= gram.inspect %>
+  <%= link_to(gram.message, gram_path(gram)) %>
+  <br />
+<% end %>
