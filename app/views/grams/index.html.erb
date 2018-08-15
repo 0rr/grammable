@@ -9,6 +9,7 @@
 <% count = 0 %>
 <%= @grams.each do |gram| %>
   <%= link_to(gram.message, gram_path(gram)) %>
+  <%= link_to('EDIT!', edit_gram_path(gram)) %>
   <br />
   <p><%= count %></p>
   <% count = count + 1 %>
