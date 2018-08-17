@@ -101,4 +101,25 @@ RSpec.describe GramsController, type: :controller do
       expect(gram.message).to eq "Initial Value"
     end
   end
+
+describe "grams#destroy action" do
+  it "should allow a user to destroy grams" do
+    gram = FactoryBot.create(:gram)
+    delete :destroy, params: {id: gram.id}
+    expect(response).to redirect_to root_path
+    #!Q - how does this work? We are redining gram as the using the gram.id of the gram that has been destroyed. Do we even need that line, or would the test work with only the second one?
+    gram = Gram.find_by_id(gram.id)
+    expect(gram).to eq nil
+  end
+
+  it "should return a 404 message if we cannot find a gram with the id that is specified" do
+    delete :destroy, params: {id: "blah blah blah"}
+    expect(response).to have_http_status(:not_found)
+  end
 end
+
+end
+
+
+# !Q - How do you avoid the problem of making sure the tests are correct? Who watches the watchmen?
+# !Q - What are all these http status codes? Are they returned standard in browswers, or are they a rails thing?
