@@ -7,15 +7,12 @@
 <br />
 
 <% count = 0 %>
-<%= @grams.each do |gram| %>
+<% @grams.each do |gram| %>
   <%= link_to(gram.message, gram_path(gram)) %>
   <%= link_to('EDIT!', edit_gram_path(gram)) %>
+  <%= image_tag gram.picture %>
   <br />
   <p><%= count %></p>
   <% count = count + 1 %>
 <% end %>
 
-<!-- !Q Why is this printing the inspection of all the grams? -->
-<!-- That line has to be occurring between the end of the do loop and the next <p> elements, but there is nothing here -->
-
-<p>fdsjfklsdjflk</p>
